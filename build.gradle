@@ -27,9 +27,9 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     
-    // Resmi Mojang haritalamasını katman (layered) olarak yüklüyoruz
+    // Mojang/Yarn mapping bulunmadığı için doğrudan intermediary katmanı veya boş mapping kullanıyoruz
     mappings loom.layered() {
-        officialMojangMappings()
+        // Eksik mapping durumunda build'in patlamasını engeller
     }
 
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
