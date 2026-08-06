@@ -11,14 +11,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Gradle kendisi Java 21 üzerinde çalışacak (major version 69 çökmesini engeller)
+      # 1. Java 21 kurulumu (Gradle çalıştırmak için)
       - name: Set up JDK 21 (for Gradle)
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
 
-      # Minecraft 26.2 derlemesi için Java 25 kuruluyor
+      # 2. Java 25 kurulumu (Minecraft 26.2 derlemesi için)
       - name: Set up JDK 25 (for Minecraft 26.2)
         uses: actions/setup-java@v4
         with:
@@ -28,11 +28,8 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
+      # JAVA_HOME değişkenini açıkça Java 21 yoluna yönlendiriyoruz
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: webdisplays-mod-jar
-          path: build/libs/*.jar
+        env:
+          JAVA_HOME: ${{ steps.setup-java-21.outputs.path }}
