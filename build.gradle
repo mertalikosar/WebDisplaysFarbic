@@ -27,10 +27,8 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     
-    // Mojang/Yarn mapping bulunmadığı için doğrudan intermediary katmanı veya boş mapping kullanıyoruz
-    mappings loom.layered() {
-        // Eksik mapping durumunda build'in patlamasını engeller
-    }
+    // 26.2 için resmi mapping olmadığından Intermediary kullanıyoruz
+    mappings "net.fabricmc:intermediary:${project.minecraft_version}"
 
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
     implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
