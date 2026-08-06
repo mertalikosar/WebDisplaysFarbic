@@ -5,10 +5,7 @@ buildscript {
         maven { url "https://maven.fabricmc.net/" }
     }
     dependencies {
-        // Loom'un Java 25 (version 69) class dosyalarını okuması için ASM kütüphanesini güncelliyoruz
-        classpath 'org.ow2.asm:asm:9.7.1'
-        classpath 'org.ow2.asm:asm:9.7.1'
-        classpath 'org.ow2.asm:asm:9.7.1'
+        classpath 'org.ow2.asm:asm-commons:9.7.1'
         classpath 'net.fabricmc:fabric-loom:1.11-SNAPSHOT'
     }
 }
@@ -30,6 +27,9 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     
+    // Minecraft haritalamasını Fabric Loom'a bildiriyoruz
+    mappings loom.officialMojangMappings()
+
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
     implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
