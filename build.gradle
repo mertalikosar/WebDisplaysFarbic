@@ -1,3 +1,20 @@
+buildscript {
+    repositories {
+        maven {
+            url = 'https://maven.fabricmc.net/'
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'net.fabricmc:fabric-loom:1.9-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.fabricmc.fabric-loom'
+apply plugin: 'maven-publish'
+
+// Burada senin orijinal build.gradle dosyanın kalan kodları (dependencies, minecraft sürümü vb.) aynen devam etsin...
 plugins {
     id 'net.fabricmc.fabric-loom' version '1.9'
     id 'maven-publish'
