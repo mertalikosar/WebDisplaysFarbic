@@ -11,7 +11,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 25
+      # Gradle kendisi Java 21 üzerinde çalışacak (major version 69 çökmesini engeller)
+      - name: Set up JDK 21 (for Gradle)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      # Minecraft 26.2 derlemesi için Java 25 kuruluyor
+      - name: Set up JDK 25 (for Minecraft 26.2)
         uses: actions/setup-java@v4
         with:
           java-version: '25'
