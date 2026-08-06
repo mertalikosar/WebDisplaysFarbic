@@ -5,18 +5,17 @@ buildscript {
         maven { url "https://maven.fabricmc.net/" }
     }
     dependencies {
-        classpath 'net.fabricmc:fabric-loom:1.7-SNAPSHOT'
+        classpath 'net.fabricmc:fabric-loom:1.10-SNAPSHOT'
     }
 }
 
-apply plugin: 'net.fabricmc.fabric-loom'
+apply plugin: 'fabric-loom'
 apply plugin: 'maven-publish'
 
 version = project.mod_version
 group = project.maven_group
 
 loom {
-    // 26.x ve sonrası için boş bırakıyoruz
 }
 
 repositories {
@@ -27,7 +26,6 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     
-    // 26.x için "modImplementation" yerine "implementation"
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
     implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
