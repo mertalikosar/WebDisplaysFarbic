@@ -1,43 +1,25 @@
-buildscript {
-    repositories {
-        maven {
-            url = 'https://maven.fabricmc.net/'
-        }
-        mavenCentral()
-        gradlePluginPortal()
-    }
-    dependencies {
-        classpath 'net.fabricmc:fabric-loom:1.9-SNAPSHOT'
-    }
-}
-
-apply plugin: 'net.fabricmc.fabric-loom'
-apply plugin: 'maven-publish'
-
-// Burada senin orijinal build.gradle dosyanın kalan kodları (dependencies, minecraft sürümü vb.) aynen devam etsin...
 plugins {
-    id 'net.fabricmc.fabric-loom' version '1.9'
-    id 'maven-publish'
+	id 'net.fabricmc.fabric-loom' version '1.9-SNAPSHOT'
+	id 'maven-publish'
 }
 
 version = project.mod_version
 group = project.maven_group
 
-// 26.x note: Minecraft ships unobfuscated from 26.1 onward, so Loom no longer
-// remaps anything and there is no "mappings" block / officialMojangMappings()
-// call anymore - this project's classes already matched Mojang's official
-// names, so no source-level renaming was needed for this part.
 loom {
 }
 
 repositories {
+	maven {
+		name = 'Fabric'
+		url = 'https://maven.fabricmc.net/'
+	}
+	mavenCentral()
 }
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 
-	// 26.x note: "modImplementation" -> "implementation" since nothing needs
-	// remapping anymore.
 	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
