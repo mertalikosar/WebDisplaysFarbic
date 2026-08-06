@@ -5,7 +5,11 @@ buildscript {
         maven { url "https://maven.fabricmc.net/" }
     }
     dependencies {
-        classpath 'net.fabricmc:fabric-loom:1.10-SNAPSHOT'
+        // Loom'un Java 25 (version 69) class dosyalarını okuması için ASM kütüphanesini güncelliyoruz
+        classpath 'org.ow2.asm:asm:9.7.1'
+        classpath 'org.ow2.asm:asm:9.7.1'
+        classpath 'org.ow2.asm:asm:9.7.1'
+        classpath 'net.fabricmc:fabric-loom:1.11-SNAPSHOT'
     }
 }
 
