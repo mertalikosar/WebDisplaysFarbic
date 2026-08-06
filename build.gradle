@@ -17,6 +17,7 @@ version = project.mod_version
 group = project.maven_group
 
 loom {
+    // Mojang resmi mapping'lerini doğrudan projeye uygular
 }
 
 repositories {
@@ -28,8 +29,8 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     
-    // Loom'un Mojang resmi mappinglerini indirmesini saglar
-    mappings loom.layered {
+    // 26.2 sürümü için katmanlı Mojang mapping yapılandırması
+    mappings loom.layered() {
         officialMojangMappings()
     }
 
