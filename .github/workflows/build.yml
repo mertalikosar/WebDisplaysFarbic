@@ -22,3 +22,9 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: webdisplays-mod-jar
+          path: build/libs/*.jar
