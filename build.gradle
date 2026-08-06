@@ -31,13 +31,16 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     
-    // Intermediary katmanının üzerine Mojang'ın resmi isim haritasını ekleyerek 'named' alanını oluşturuyoruz
+    // Intermediary tabanı üzerine MojMap 'named' namespace'ini dinamik oluşturan katman
     mappings loom.layered() {
-        officialMojangMappings()
+        officialMojangMappings {
+            nameSynthesized = true
+        }
+        mappings("net.fabricmc:intermediary:${project.minecraft_version}")
     }
 
-    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
     implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
 }
 
 processResources {
