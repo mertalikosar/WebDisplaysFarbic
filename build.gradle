@@ -22,13 +22,16 @@ loom {
 repositories {
     mavenCentral()
     maven { url "https://maven.fabricmc.net/" }
+    maven { url "https://libraries.minecraft.net/" }
 }
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     
-    // MojMap yerine Fabric'in 26.2 için sunduğu Yarn haritasını kullanıyoruz
-    mappings "net.fabricmc:yarn:26.2+build.1:v2"
+    // Loom'un Mojang resmi mappinglerini indirmesini saglar
+    mappings loom.layered {
+        officialMojangMappings()
+    }
 
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
     implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
