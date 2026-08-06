@@ -17,7 +17,6 @@ version = project.mod_version
 group = project.maven_group
 
 loom {
-    // Standard remapping ve runtime setup
 }
 
 repositories {
@@ -28,9 +27,9 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     
-    // Mojang official mappings katmanı için Loom'un dahili builder'ı
-    mappings loom.officialMojangMappings {
-        setNameSyntheticParts(true)
+    // Doğru syntax: loom.officialMojangMappings() bağımlılığı layered closure'ı içinde çağrılır
+    mappings loom.layered {
+        officialMojangMappings()
     }
 
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
