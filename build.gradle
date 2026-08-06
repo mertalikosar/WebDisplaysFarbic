@@ -27,10 +27,8 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     
-    // Doğru syntax: loom.officialMojangMappings() bağımlılığı layered closure'ı içinde çağrılır
-    mappings loom.layered {
-        officialMojangMappings()
-    }
+    // MojMap yerine Fabric'in 26.2 için sunduğu Yarn haritasını kullanıyoruz
+    mappings "net.fabricmc:yarn:26.2+build.1:v2"
 
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
     implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
