@@ -39,12 +39,14 @@ processResources {
     }
 }
 
-// Java Toolchain: Gradle 21 ile çalışsa bile derlemeyi otomatik Java 25 ile yapar
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 25
+}
+
 java {
     withSourcesJar()
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
-    }
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
 }
 
 publishing {
