@@ -1,2 +1,0 @@
-# WebDisplaysFarbic
-java minecraft mod
