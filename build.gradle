@@ -4,23 +4,16 @@ buildscript {
         gradlePluginPortal()
         maven { url "https://maven.fabricmc.net/" }
     }
-    dependencies {
-        // ASM kütüphanesini Java 25/26 bytecode'unu destekleyecek sürüme zorluyoruz
-        classpath 'org.ow2.asm:asm:9.7.1'
-        classpath 'org.ow2.asm:asm-commons:9.7.1'
-        classpath 'org.ow2.asm:asm-tree:9.7.1'
-        classpath 'org.ow2.asm:asm-util:9.7.1'
-        
-        classpath 'net.fabricmc:fabric-loom:1.10.5'
-    }
-}
-
-// Global olarak tüm konfigürasyonlarda ASM sürümünü 9.7.1 olarak sabitleyin
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        if (details.requested.group == 'org.ow2.asm') {
-            details.useVersion '9.7.1'
+    // Loom'un kendi içindeki ASM bağımlılığını 9.7.1'e zorluyoruz
+    configurations.classpath {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'org.ow2.asm') {
+                details.useVersion '9.7.1'
+            }
         }
+    }
+    dependencies {
+        classpath 'net.fabricmc:fabric-loom:1.10.5'
     }
 }
 
