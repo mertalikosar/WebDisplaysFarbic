@@ -6,7 +6,8 @@ buildscript {
     }
     dependencies {
         classpath 'org.ow2.asm:asm-commons:9.7.1'
-        classpath 'net.fabricmc:fabric-loom:1.11-SNAPSHOT'
+        // Loom versiyonunu stabil 1.10 sürümüne çekiyoruz
+        classpath 'net.fabricmc:fabric-loom:1.10-SNAPSHOT'
     }
 }
 
@@ -25,7 +26,7 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     
-    // Kodların MojMap olduğu için officialMojangMappings katmanını zorunlu kullanıyoruz
+    // Mojang haritalama katmanı
     mappings loom.layered() {
         officialMojangMappings()
     }
